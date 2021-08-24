@@ -4,6 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const readmeBox = require('readme-box').ReadmeBox;
 const chunk = require('chunk');
+var myJsonAbc = require("jsonabc");
+var sorted = myJsonAbc.sortObj(path);
+const path = sorted
 
 const generateCell = (cell) => {
     const objectFieldNames = JSON.parse(core.getInput('object-field-names'));
@@ -27,7 +30,7 @@ const generateRow = (columns, row) => {
     return `<tr>${cells.join('')}</tr>`;
 };
 
-(async () => {
+(async() => {
     const githubToken = core.getInput('github-token');
     const filePath = path.join(process.env.GITHUB_WORKSPACE, core.getInput('json-file-path'));
     const columns = core.getInput('columns');
